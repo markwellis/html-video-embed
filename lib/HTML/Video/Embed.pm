@@ -117,7 +117,7 @@ Converts urls into html embed codes, supported sites are
 
 =head2 new
 
-takes two (optional) arguments, width and height, which sets the size of the video embed code
+takes two (optional) arguments, width and height, which sets the size of the video 
 
 =head2 url_to_embed
 

@@ -9,7 +9,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 $VERSION = eval $VERSION;
 
 has 'width' => (
@@ -94,7 +94,7 @@ HTML::Video::Embed - convert a url into a html embed string
 
     my $html_embed_code = $embedder->url_to_embed( $url );
 
-    #$html_embed_code is now == "<iframe title="YouTube video player" width="570" height="340" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
+$html_embed_code is now == "<iframe title="YouTube video player" width="570" height="340" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
 
 =head1 DESCRIPTION
 
@@ -135,7 +135,7 @@ n0body E<lt>n0body@thisaintnews.comE<gt>
 
 =head1 SEE ALSO
 
-L<http://thisaintnews.com>, L<Gearman::Worker>, L<App:Daemon>
+L<http://thisaintnews.com>
 
 =head1 LICENSE
 

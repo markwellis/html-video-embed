@@ -19,4 +19,7 @@ is( $embeder->url_to_embed('http://www.youtube.com/watch?v=xExxSdzkZZB0'), undef
 is( $embeder->url_to_embed('http://www.youtube.com/watch?h=xExxSdzkZZB0'), undef, 'no v=');
 is( $embeder->url_to_embed('http://www.y0utube.com/watch?h=xExxSdzkZZB0'), undef, 'y0utube, not youtube');
 
+my ( $domain_reg, $uri ) = $embeder->is_video('http://www.youtube.com/watch?v=xExSdzkZZB0');
+ok( $domain_reg, 'is_video works' );
+
 done_testing;

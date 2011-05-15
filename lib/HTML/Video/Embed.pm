@@ -27,8 +27,8 @@ has 'height' => (
 has '_modules' => (
     'is' => 'ro',
     'isa' => 'HashRef[Object]',
-    'lazy_build' => 1,
     'init_arg' => undef,
+    'builder' => '_build__modules',
 );
 
 sub _build__modules{
@@ -50,9 +50,9 @@ sub _build__modules{
 sub url_to_embed{
     my ( $self, $url ) = @_;
 
-    my ( $domain, $uri ) = $self->is_video( $url );
-    if ( defined( $domain ) ){
-        return $self->_modules->{ $domain }->process( $self, $uri );
+    my ( $domain_reg, $uri ) = $self->is_video( $url );
+    if ( defined( $domain_reg ) ){
+        return $self->_modules->{ $domain_reg }->process( $self, $uri );
     }
 
     return undef;
@@ -65,11 +65,10 @@ sub is_video{
 
     my $uri = URI->new( URI::Escape::XS::uri_unescape($url) );
 
-    foreach my $domain ( keys(%{ $self->_modules }) ){
+    foreach my $domain_reg ( keys(%{ $self->_modules }) ){
 #figure out if url is supported
-        my $domain_reg = $self->_modules->{ $domain }->domain_reg;
         if ( $uri->host =~ m/$domain_reg/ ){
-            return ( $domain, $uri );
+            return ( $domain_reg, $uri );
         }
     }
 

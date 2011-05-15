@@ -50,7 +50,7 @@ sub _build__modules{
 sub url_to_embed{
     my ( $self, $url ) = @_;
 
-    my ( $domain_reg, $uri ) = $self->is_video( $url );
+    my ( $domain_reg, $uri ) = $self->_is_video( $url );
     if ( defined( $domain_reg ) ){
         return $self->_modules->{ $domain_reg }->process( $self, $uri );
     }
@@ -58,7 +58,7 @@ sub url_to_embed{
     return undef;
 }
 
-sub is_video{
+sub _is_video{
     my ( $self, $url ) = @_;
 
     return undef if ( !is_web_uri($url) );
@@ -76,3 +76,72 @@ sub is_video{
 }
 
 __PACKAGE__->meta->make_immutable;
+
+=head1 NAME
+
+HTML::Video::Embed - convert a url into a html embed string
+
+=head1 SYNOPSIS
+
+    use HTML::Video::Embed;
+
+    my $embedder = HTML::Video::Embed->new({
+        'width' => '340',
+        'height' => '570',
+    });
+
+    my $url = 'http://www.youtube.com/watch?v=HMhks1TSFog';
+
+    my $html_embed_code = $embedder->url_to_embed( $url );
+
+    #$html_embed_code is now == "<iframe title="YouTube video player" width="340" height="570" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
+
+=head1 DESCRIPTION
+
+Converts urls into html embed codes, supported sites are
+
+    Collegehumor
+    DailyMotion
+    FunnyOrDie
+    Google
+    Kontraband
+    LiveLeak
+    MegaVideo
+    MetaCafe
+    SpikedHumor
+    Vimeo
+    Yahoo
+    Youtube
+
+=head1 METHODS
+
+=head2 new
+
+takes two (optional) arguments, width and height, which sets the size of the video embed code
+
+=head2 url_to_embed
+
+converts a url into the html embed code
+
+=head1 SUPPORT
+
+Bugs should always be submitted via the CPAN bug tracker
+
+For other issues, contact the maintainer
+
+=head1 AUTHORS
+
+n0body E<lt>n0body@thisaintnews.comE<gt>
+
+=head1 SEE ALSO
+
+L<http://thisaintnews.com>, L<Gearman::Worker>, L<App:Daemon>
+
+=head1 LICENSE
+
+Copyright (C) 2011 by n0body L<http://thisaintnews.com/>
+
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

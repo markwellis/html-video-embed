@@ -86,15 +86,15 @@ HTML::Video::Embed - convert a url into a html embed string
     use HTML::Video::Embed;
 
     my $embedder = HTML::Video::Embed->new({
-        'width' => '340',
-        'height' => '570',
+        'width' => '570',
+        'height' => '340',
     });
 
     my $url = 'http://www.youtube.com/watch?v=HMhks1TSFog';
 
     my $html_embed_code = $embedder->url_to_embed( $url );
 
-    #$html_embed_code is now == "<iframe title="YouTube video player" width="340" height="570" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
+    #$html_embed_code is now == "<iframe title="YouTube video player" width="570" height="340" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
 
 =head1 DESCRIPTION
 

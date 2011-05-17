@@ -9,7 +9,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 $VERSION = eval $VERSION;
 
 has 'width' => (
@@ -102,6 +102,7 @@ Converts urls into html embed codes, supported sites are
 
     Collegehumor
     DailyMotion
+    EbaumsWorld
     FunnyOrDie
     Google
     Kontraband

@@ -10,7 +10,7 @@ my $embeder = new HTML::Video::Embed({
 });
 
 is( $embeder->url_to_embed('http://www.youtube.com/watch?v=xExSdzkZZB0'),  
-    '<iframe title="YouTube video player" width="450" height="370" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen></iframe>',
+    '<iframe title="YouTube video player" width="450" height="370" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
 
     'youtube embed works'
 );

@@ -25,7 +25,7 @@ sub process{
             .'height="' . $embeder->height . '" '
             .'src="http://www.youtube.com/embed/' . $youtube_id . '" '
             .'frameborder="0" '
-            .'allowfullscreen></iframe>';
+            .'allowfullscreen="1"></iframe>';
     }
 
     return undef;

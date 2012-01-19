@@ -24,6 +24,7 @@ lib/HTML/Video/Embed/Site/MetaCafe.pm
 lib/HTML/Video/Embed/Site/SpikedHumor.pm
 lib/HTML/Video/Embed/Site/Vimeo.pm
 lib/HTML/Video/Embed/Site/Yahoo.pm
+lib/HTML/Video/Embed/Site/Youtu_be.pm
 lib/HTML/Video/Embed/Site/Youtube.pm
 Makefile.PL
 MANIFEST			This list of files
@@ -40,4 +41,5 @@ t/metacafe.t
 t/spikedhumor.t
 t/vimeo.t
 t/yahoo.t
+t/youtu.be.t
 t/youtube.t

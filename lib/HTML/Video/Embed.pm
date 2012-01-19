@@ -9,7 +9,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 $VERSION = eval $VERSION;
 
 has 'width' => (
@@ -113,6 +113,7 @@ Converts urls into html embed codes, supported sites are
     Vimeo
     Yahoo
     Youtube
+    Youtu.be
 
 =head1 METHODS
 

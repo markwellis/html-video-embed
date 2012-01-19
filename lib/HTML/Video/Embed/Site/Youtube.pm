@@ -19,16 +19,21 @@ sub process{
     my $youtube_id;
 
     if ( ($youtube_id = $uri->query_param('v')) && ($youtube_id =~ m/$validate_reg/) ){
-        return '<iframe '
-            .'title="YouTube video player" '
-            .'width="' . $embeder->width . '" '
-            .'height="' . $embeder->height . '" '
-            .'src="http://www.youtube.com/embed/' . $youtube_id . '" '
-            .'frameborder="0" '
-            .'allowfullscreen="1"></iframe>';
+        return $self->_embed_html( $embeder, $youtube_id );
     }
 
     return undef;
 }
 
+sub _embed_html{
+    my ( $self, $embeder, $youtube_id ) = @_;
+        
+    return '<iframe '
+        .'title="YouTube video player" '
+        .'width="' . $embeder->width . '" '
+        .'height="' . $embeder->height . '" '
+        .'src="http://www.youtube.com/embed/' . $youtube_id . '" '
+        .'frameborder="0" '
+        .'allowfullscreen="1"></iframe>';
+}
 __PACKAGE__->meta->make_immutable;

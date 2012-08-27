@@ -5,13 +5,12 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    'class' => 'video',
 });
 
 is( $embeder->url_to_embed('http://www.dailymotion.com/video/xbrozz_the-worst-5-things-to-say-policemen_fun'),
 
-    '<object width="450" height="370"><param name="movie" value="http://www.dailymotion.com/swf/video/xbrozz" /><param name="allowFullScreen" value="true" /><embed type="application/x-shockwave-flash" src="http://www.dailymotion.com/swf/video/xbrozz" width="450" height="370" allowfullscreen="true"></embed></object>',
+    '<object class="video"><param name="movie" value="http://www.dailymotion.com/swf/video/xbrozz" /><param name="allowFullScreen" value="true" /><embed type="application/x-shockwave-flash" src="http://www.dailymotion.com/swf/video/xbrozz" class="video" allowfullscreen="true"></embed></object>',
 
     'dailymotion embed works'
 );

@@ -19,12 +19,12 @@ sub process{
     my $google_id;
 
     if ( ($google_id = $uri->query_param('docid')) && ($google_id =~ m/$validate_reg/) ){
-        return '<embed id="VideoPlayback"'
-            .' src="http://video.google.com/googleplayer.swf?'
+        return '<embed id="VideoPlayback" '
+            .'src="http://video.google.com/googleplayer.swf?'
             .'docid=' . $google_id 
-            .'&hl=en&fs=true" style="width:' . $embeder->width . 'px;height:' . $embeder->height . 'px"'
-            .' allowFullScreen="true"'
-            .' type="application/x-shockwave-flash">'
+            .'&hl=en&fs=true" class="' . $embeder->class . '" '
+            .'allowFullScreen="true" '
+            .'type="application/x-shockwave-flash">'
             .'</embed>';
     }
 

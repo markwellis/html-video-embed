@@ -5,18 +5,11 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    class => "video",
 });
 
 is( $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0'),  
-    '<iframe title="YouTube video player" width="450" height="370" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
-
-    'youtube embed works'
-);
-
-is( $embeder->url_to_embed('http://youtu.be/xExSdzkZZB0'),  
-    '<iframe title="YouTube video player" width="450" height="370" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
+    '<iframe title="YouTube video player" class="video" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
 
     'youtube embed works'
 );

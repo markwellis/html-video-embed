@@ -5,8 +5,7 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    "class" => "video",
 });
 
 is( $embeder->url_to_embed('http://video.google.com/videoplay?docid=-2912878405399014351#'),
@@ -14,7 +13,7 @@ is( $embeder->url_to_embed('http://video.google.com/videoplay?docid=-29128784053
     '<embed id="VideoPlayback"'
         .' src="http://video.google.com/googleplayer.swf?'
         .'docid=-2912878405399014351' 
-        .'&hl=en&fs=true" style="width:450px;height:370px"'
+        .'&hl=en&fs=true" class="video"'
         .' allowFullScreen="true"'
         .' type="application/x-shockwave-flash">'
         .'</embed>'

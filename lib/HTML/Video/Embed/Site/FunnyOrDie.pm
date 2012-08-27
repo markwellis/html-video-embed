@@ -21,11 +21,11 @@ sub process{
             return undef;
         }
 
-        return '<object width="' . $embeder->width . '" height="' . $embeder->height . '" id="ordie_player_' . $vid . '">'
+        return '<object class="' . $embeder->class . '" id="ordie_player_' . $vid . '">'
             .'<param name="movie" value="http://player.ordienetworks.com/flash/fodplayer.swf" />'
             .'<param name="flashvars" value="key=' . $vid . '" />'
             .'<param name="allowfullscreen" value="true" />'
-            .'<embed width="' . $embeder->width . '" height="' . $embeder->height . '" flashvars="key=' . $vid . '" allowfullscreen="true" '
+            .'<embed class="' . $embeder->class . '" flashvars="key=' . $vid . '" allowfullscreen="true" '
             .'quality="high" src="http://player.ordienetworks.com/flash/fodplayer.swf" '
             .'name="ordie_player_' . $vid . '" type="application/x-shockwave-flash"></embed></object>';
     }

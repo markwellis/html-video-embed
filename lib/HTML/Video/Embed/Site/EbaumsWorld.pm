@@ -25,8 +25,7 @@ sub process{
             .'allowScriptAccess="always" '
             .'flashvars="id1=' . $vid . '" '
             .'wmode="transparent" '
-            .'width="' . $embeder->width . '" '
-            .'height="' . $embeder->height . '" '
+            .'class="' . $embeder->class . '" '
             .'allowfullscreen="true" />';
     }
     

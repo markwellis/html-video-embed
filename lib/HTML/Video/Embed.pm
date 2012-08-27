@@ -9,19 +9,13 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 $VERSION = eval $VERSION;
 
-has 'width' => (
+has 'class' => (
     'is' => 'rw',
-    'isa' => 'Num',
-    'default' => '450',
-);
-
-has 'height' => (
-    'is' => 'rw',
-    'isa' => 'Num',
-    'default' => '370',
+    'isa' => 'Str',
+    'required' => 1,
 );
 
 has '_modules' => (
@@ -83,18 +77,24 @@ HTML::Video::Embed - convert a url into a html embed string
 
 =head1 SYNOPSIS
 
+    #css
+    .css-video-class{
+        width:570px;
+        height:340px;
+    }
+
+    #perl
     use HTML::Video::Embed;
 
     my $embedder = HTML::Video::Embed->new({
-        'width' => '570',
-        'height' => '340',
+        'class' => 'css-video-class',
     });
 
     my $url = 'http://www.youtube.com/watch?v=HMhks1TSFog';
 
     my $html_embed_code = $embedder->url_to_embed( $url );
 
-$html_embed_code is now == "<iframe title="YouTube video player" width="570" height="340" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
+$html_embed_code is now == "<iframe title="YouTube video player" class="css-video-class" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
 
 =head1 DESCRIPTION
 
@@ -119,7 +119,7 @@ Converts urls into html embed codes, supported sites are
 
 =head2 new
 
-takes two (optional) arguments, width and height, which sets the size of the video 
+Takes one argument, class, which sets the css class of the video 
 
 =head2 url_to_embed
 

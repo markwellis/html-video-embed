@@ -22,14 +22,14 @@ sub process{
             return undef;
         }
 
-        return '<object width="' . $embeder->width . '" height="' . $embeder->height . '">'
+        return '<object class="' . $embeder->class . '">'
             .'<param name="movie" value="http://d.yimg.com/static.video.yahoo.com/yep/YV_YEP.swf?ver=2.2.46" />'
            .'<param name="allowFullScreen" value="true" />'
             .'<param name="bgcolor" value="#000000" /><param name="flashVars" '
             .'value="id=' . $id . '&vid=' . $vid 
             .'&lang=en-gb&intl=uk&embed=1" />'
             .'<embed src="http://d.yimg.com/static.video.yahoo.com/yep/YV_YEP.swf?ver=2.2.46" '
-            .'type="application/x-shockwave-flash" width="' . $embeder->width . '" height="' . $embeder->height . '" allowFullScreen="true" '
+            .'type="application/x-shockwave-flash" class="' . $embeder->class . '" allowFullScreen="true" '
             .'bgcolor="#000000" '
             .'flashVars="id=' . $id . '&vid=' . $vid 
             .'&lang=en-gb&intl=uk&embed=1" ></embed></object>';

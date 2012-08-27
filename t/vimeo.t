@@ -5,13 +5,12 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    class=> "video",
 });
 
 is( $embeder->url_to_embed('http://vimeo.com/12279924'),
 
-    '<object width="450" height="370"><param name="allowfullscreen" value="true" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=12279924&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=12279924&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" width="450" height="370"></embed></object>',
+    '<object class="video"><param name="allowfullscreen" value="true" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=12279924&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=12279924&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" class="video"></embed></object>',
 
     'vimeo embed works'
 );

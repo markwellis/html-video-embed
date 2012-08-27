@@ -23,12 +23,14 @@ sub process{
 
         return '<object type="application/x-shockwave-flash" '
             .'data="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id=' . $vid . '&fullscreen=1" '
-            .'width="' . $embeder->width . '" height="' . $embeder->height . '" ><param name="allowfullscreen" value="true"/>'
+            .'class="' . $embeder->class . '">'
+            .'<param name="allowfullscreen" value="true"/>'
             .'<param name="wmode" value="transparent"/>'
             .'<param name="movie" quality="best" value="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id='
             . $vid . '&fullscreen=1"/>'
             .'<embed src="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id=' . $vid . '&fullscreen=1" '
-            .'type="application/x-shockwave-flash" wmode="transparent" width="' . $embeder->width . '" height="' . $embeder->height . '"></embed></object>';
+            .'type="application/x-shockwave-flash" wmode="transparent" '
+            .'class="' . $embeder->class . '"></embed></object>';
     }
     
     return undef;

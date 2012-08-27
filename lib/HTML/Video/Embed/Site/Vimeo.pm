@@ -20,7 +20,7 @@ sub process{
         if ( (!$vid) ){
             return undef;
         }
-        return '<object width="' . $embeder->width . '" height="' . $embeder->height . '">'
+        return '<object class="' . $embeder->class . '">'
             .'<param name="allowfullscreen" value="true" />'
             .'<param name="movie" value="'
             .'http://vimeo.com/moogaloop.swf?clip_id=' . $vid . '&amp;'
@@ -28,7 +28,7 @@ sub process{
             .'<embed src="http://vimeo.com/moogaloop.swf?clip_id=' . $vid . '&amp;'
             .'server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" '
             .'type="application/x-shockwave-flash" allowfullscreen="true" '
-            .'width="' . $embeder->width . '" height="' . $embeder->height . '"></embed></object>';
+            .'class="' . $embeder->class . '"></embed></object>';
     }
     
     return undef;

@@ -1,3 +1,6 @@
+0.008
+    changed to take css class instead of height and width
+    added support for screen.yahoo.com
 0.007
     forgot to update MANIFEST to include youtu.be module :/
 0.006

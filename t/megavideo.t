@@ -5,13 +5,12 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    class => "video",
 });
 
 is( $embeder->url_to_embed('http://www.megavideo.com/?v=0BILAIF2'),
 
-    '<object width="450" height="370"><param name="movie" value="http://www.megavideo.com/v/0BILAIF2" /><param name="allowFullScreen" value="true" /><embed src="http://www.megavideo.com/v/0BILAIF2" type="application/x-shockwave-flash" allowfullscreen="true" width="450" height="370"></embed></object>',
+    '<object class="video"><param name="movie" value="http://www.megavideo.com/v/0BILAIF2" /><param name="allowFullScreen" value="true" /><embed src="http://www.megavideo.com/v/0BILAIF2" type="application/x-shockwave-flash" allowfullscreen="true" class="video"></embed></object>',
 
     'megavideo embed works'
 );

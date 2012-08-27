@@ -30,8 +30,7 @@ sub _embed_html{
         
     return '<iframe '
         .'title="YouTube video player" '
-        .'width="' . $embeder->width . '" '
-        .'height="' . $embeder->height . '" '
+        .'class="' . $embeder->class . '" '
         .'src="http://www.youtube.com/embed/' . $youtube_id . '" '
         .'frameborder="0" '
         .'allowfullscreen="1"></iframe>';

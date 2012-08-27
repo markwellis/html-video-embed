@@ -23,8 +23,8 @@ sub process{
 
         return '<embed src="http://www.spikedhumor.com/player/vcplayer.swf?file=http://www.spikedhumor.com/videocodes/'
             . $vid . '/data.xml&auto_play=false" quality="high" '
-            .'scale="noscale" bgcolor="#000000" width="' . $embeder->width . '" '
-            .'height="' . $embeder->height . '" align="middle" '
+            .'scale="noscale" bgcolor="#000000" '
+            .'class="' . $embeder->class . '" align="middle" '
             .'type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />';
     }
     

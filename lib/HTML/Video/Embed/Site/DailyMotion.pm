@@ -21,12 +21,13 @@ sub process{
             return undef;
         }
 
-        return '<object width="' . $embeder->width . '" height="' . $embeder->height . '">'
+        return '<object class="' . $embeder->class . '">'
             .'<param name="movie" value="http://www.dailymotion.com/swf/video/' . $vid . '" />'
             .'<param name="allowFullScreen" value="true" />'
             .'<embed type="application/x-shockwave-flash" '
-            .'src="http://www.dailymotion.com/swf/video/' . $vid . '" width="' . $embeder->width . '" '
-            .'height="' . $embeder->height . '" allowfullscreen="true"></embed></object>';
+            .'src="http://www.dailymotion.com/swf/video/' . $vid . '" '
+            .'class="' . $embeder->class . '" '
+            .'allowfullscreen="true"></embed></object>';
     }
     
     return undef;

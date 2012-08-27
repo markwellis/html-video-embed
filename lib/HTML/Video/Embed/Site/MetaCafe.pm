@@ -21,8 +21,9 @@ sub process{
             return undef;
         }
 
-        return '<embed src="http://www.metacafe.com/fplayer/' . $vid . '/unimportant_info_i_hope.swf" width="' . $embeder->width . '" '
-            .'height="' . $embeder->height . '" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" '
+        return '<embed src="http://www.metacafe.com/fplayer/' . $vid . '/unimportant_info_i_hope.swf" '
+            .'class="' . $embeder->class . '" '
+            .'wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" '
             .'type="application/x-shockwave-flash" allowFullScreen="true" name="Metacafe_' . $vid . '"></embed>';
     }
     

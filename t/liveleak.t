@@ -5,16 +5,15 @@ use Test::More;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
-    'width' => 450,
-    'height' => 370,
+    class => "video",
 });
 
 is( $embeder->url_to_embed('http://www.liveleak.com/view?i=ffc_1272800490'),
 
-    '<object width="450" height="370"><param name="movie" value="http://www.liveleak.com/e/ffc_1272800490" />'
+    '<object class="video"><param name="movie" value="http://www.liveleak.com/e/ffc_1272800490" />'
         .'<param name="wmode" value="transparent" />'
         .'<embed src="http://www.liveleak.com/e/ffc_1272800490" type="application/x-shockwave-flash" '
-        .'wmode="transparent" width="450" height="370"></embed></object>',
+        .'wmode="transparent" class="video"></embed></object>',
 
     'liveleak embed works'
 );

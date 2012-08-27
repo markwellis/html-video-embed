@@ -20,7 +20,7 @@ sub process{
         if ( (!$vid) ){
             return undef;
         }
-        return '<embed height="' . $embeder->height . '" width="' . $embeder->width . '" '
+        return '<embed class="' . $embeder->class . '" '
             .'flashvars="file=http://208.116.9.205/10/content/' . $vid . '/450.flv" '
             .'usefullscreen="true" allowfullscreen="true" quality="high" '
             .'name="kbvideo" id="kbvideo" src="http://www.kontraband.com/show/4.5.swf" '

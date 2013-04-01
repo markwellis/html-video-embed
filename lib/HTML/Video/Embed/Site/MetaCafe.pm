@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::MetaCafe;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -9,25 +8,17 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/watch/(\d+)/.*|;
+    return qr|^/watch/(\d+/\w+)/.*|;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    if ( my ($vid) = $uri->path =~ m/$validate_reg/ ){
-        if ( (!$vid) ){
-            return undef;
-        }
-
-        return '<embed src="http://www.metacafe.com/fplayer/' . $vid . '/unimportant_info_i_hope.swf" '
-            .'class="' . $embeder->class . '" '
-            .'wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" '
-            .'type="application/x-shockwave-flash" allowFullScreen="true" name="Metacafe_' . $vid . '"></embed>';
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return qq|<embed flashVars="playerVars=autoPlay=no" src="http://www.metacafe.com/fplayer/${vid}.swf" class="${ \$embeder->class }" wmode="transparent" allowFullScreen="true" type="application/x-shockwave-flash"></embed>|;
     }
     
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

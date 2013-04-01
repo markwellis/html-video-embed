@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::FunnyOrDie;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -15,22 +14,11 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    if ( my ($vid) = $uri->path =~ m/$validate_reg/ ){
-        if ( (!$vid) ){
-            return undef;
-        }
-
-        return '<object class="' . $embeder->class . '" id="ordie_player_' . $vid . '">'
-            .'<param name="movie" value="http://player.ordienetworks.com/flash/fodplayer.swf" />'
-            .'<param name="flashvars" value="key=' . $vid . '" />'
-            .'<param name="allowfullscreen" value="true" />'
-            .'<embed class="' . $embeder->class . '" flashvars="key=' . $vid . '" allowfullscreen="true" '
-            .'quality="high" src="http://player.ordienetworks.com/flash/fodplayer.swf" '
-            .'name="ordie_player_' . $vid . '" type="application/x-shockwave-flash"></embed></object>';
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.funnyordie.com/embed/${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
     }
     
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

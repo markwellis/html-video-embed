@@ -8,14 +8,14 @@ my $embeder = new HTML::Video::Embed({
     class => "video",
 });
 
-is( $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0'),  
-    '<iframe title="YouTube video player" class="video" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
-
+is( 
+    $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0'),  
+    '<iframe class="video" src="http://www.youtube.com/embed/xExSdzkZZB0" frameborder="0" allowfullscreen="1"></iframe>',
     'youtube embed works'
 );
 
 is( $embeder->url_to_embed('http://www.youtu.be/xExxSdzkZZB0'), undef, 'invalid id');
 is( $embeder->url_to_embed('http://www.youtu.be/'), undef, 'no v=');
-is( $embeder->url_to_embed('http://www.y0utu.be/xExxSdzkZZB0'), undef, 'y0utube, not youtube');
+is( $embeder->url_to_embed('http://www.y0utu.be/xExxSdzkZZB0'), undef, 'domain check');
 
 done_testing;

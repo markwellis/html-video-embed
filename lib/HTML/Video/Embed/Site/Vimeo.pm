@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::Vimeo;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -15,23 +14,11 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    if ( my ($vid) = $uri->path =~ m/$validate_reg/ ){
-        if ( (!$vid) ){
-            return undef;
-        }
-        return '<object class="' . $embeder->class . '">'
-            .'<param name="allowfullscreen" value="true" />'
-            .'<param name="movie" value="'
-            .'http://vimeo.com/moogaloop.swf?clip_id=' . $vid . '&amp;'
-            .'server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />'
-            .'<embed src="http://vimeo.com/moogaloop.swf?clip_id=' . $vid . '&amp;'
-            .'server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" '
-            .'type="application/x-shockwave-flash" allowfullscreen="true" '
-            .'class="' . $embeder->class . '"></embed></object>';
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return qq|<iframe class="${ \$embeder->class }" src="http://player.vimeo.com/video/${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
     }
     
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

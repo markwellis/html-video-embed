@@ -1,6 +1,5 @@
 package HTML::Video::Embed;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 use URI;
 use URI::QueryParam;
@@ -14,13 +13,11 @@ $VERSION = eval $VERSION;
 
 has 'class' => (
     'is' => 'rw',
-    'isa' => 'Str',
     'required' => 1,
 );
 
 has '_modules' => (
     'is' => 'ro',
-    'isa' => 'HashRef[Object]',
     'init_arg' => undef,
     'builder' => '_build__modules',
 );
@@ -69,7 +66,7 @@ sub _is_video{
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;
 
 =head1 NAME
 

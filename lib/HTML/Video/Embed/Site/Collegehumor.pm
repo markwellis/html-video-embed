@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::Collegehumor;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -9,31 +8,17 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/video:(\d+)|;
+    return qr|^/video[:\/](\d+)|;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    if ( my ($vid) = $uri->path =~ m/$validate_reg/ ){
-        if ( (!$vid) ){
-            return undef;
-        }
-
-        return '<object type="application/x-shockwave-flash" '
-            .'data="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id=' . $vid . '&fullscreen=1" '
-            .'class="' . $embeder->class . '">'
-            .'<param name="allowfullscreen" value="true"/>'
-            .'<param name="wmode" value="transparent"/>'
-            .'<param name="movie" quality="best" value="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id='
-            . $vid . '&fullscreen=1"/>'
-            .'<embed src="http://www.collegehumor.com/moogaloop/moogaloop.swf?clip_id=' . $vid . '&fullscreen=1" '
-            .'type="application/x-shockwave-flash" wmode="transparent" '
-            .'class="' . $embeder->class . '"></embed></object>';
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.collegehumor.com/e/${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
     }
     
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::LiveLeak;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -15,19 +14,12 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    my $leak_id;
-
-    if ( ($leak_id = $uri->query_param('i')) && ($leak_id =~ m/$validate_reg/) ){
-        return '<object class="' . $embeder->class . '">'
-            .'<param name="movie" value="http://www.liveleak.com/e/' . $leak_id . '" />'
-            .'<param name="wmode" value="transparent" />'
-            .'<embed src="http://www.liveleak.com/e/' . $leak_id . '" type="application/x-shockwave-flash"'
-            .' wmode="transparent" class="' . $embeder->class . '">'
-            .'</embed></object>';
+    my $vid = $uri->query_param('i') || '';
+    if ( $vid =~ m/${ \$self->validate_reg }/ ){
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.liveleak.com/ll_embed?i=${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
     }
 
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

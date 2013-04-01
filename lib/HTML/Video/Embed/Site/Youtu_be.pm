@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::Youtu_be;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 extends 'HTML::Video::Embed::Site::Youtube';
 
@@ -15,11 +14,10 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
     
-    my $validate_reg = $self->validate_reg;
-    if ( my ($youtube_id) = $uri->path =~ m/$validate_reg/ ){
-        return $self->_embed_html( $embeder, $youtube_id );
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return $self->_embed_html( $embeder, $vid );
     }
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

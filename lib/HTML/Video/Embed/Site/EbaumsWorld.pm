@@ -1,6 +1,5 @@
 package HTML::Video::Embed::Site::EbaumsWorld;
-use Moose;
-use namespace::autoclean;
+use Moo;
 
 with 'HTML::Video::Embed::Module';
 
@@ -15,21 +14,11 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $validate_reg = $self->validate_reg;
-    if ( my ($vid) = $uri->path =~ m/$validate_reg/ ){
-        if ( (!$vid) ){
-            return undef;
-        }
-
-        return '<embed src="http://www.ebaumsworld.com/player.swf" '
-            .'allowScriptAccess="always" '
-            .'flashvars="id1=' . $vid . '" '
-            .'wmode="transparent" '
-            .'class="' . $embeder->class . '" '
-            .'allowfullscreen="true" />';
+    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.ebaumsworld.com/media/embed/${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
     }
     
     return undef;
 }
 
-__PACKAGE__->meta->make_immutable;
+1;

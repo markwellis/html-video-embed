@@ -1,3 +1,5 @@
+0.010
+    fixed missing META.yml
 0.009
     removed video sites no longer avaiable (google, spiked humour, megavideo and yahoo (replaced with yahoo-screen)
     changed embed codes to use iframe (where avaiable) instead of embed

@@ -1,3 +1,9 @@
+0.009
+    removed video sites no longer avaiable (google, spiked humour, megavideo and yahoo (replaced with yahoo-screen)
+    changed embed codes to use iframe (where avaiable) instead of embed
+    tided up code
+    changed from Moose to Moo
+    added t/bin/create_test_html.pl script, will output html test page for visual inspection of functioning embedder
 0.008
     changed to take css class instead of height and width
     added support for screen.yahoo.com

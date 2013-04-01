@@ -8,7 +8,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 $VERSION = eval $VERSION;
 
 has 'class' => (
@@ -91,7 +91,7 @@ HTML::Video::Embed - convert a url into a html embed string
 
     my $html_embed_code = $embedder->url_to_embed( $url );
 
-$html_embed_code is now == "<iframe title="YouTube video player" class="css-video-class" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen></iframe>"
+$html_embed_code is now == "<iframe class="css-video-class" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen="1"></iframe>"
 
 =head1 DESCRIPTION
 
@@ -101,14 +101,11 @@ Converts urls into html embed codes, supported sites are
     DailyMotion
     EbaumsWorld
     FunnyOrDie
-    Google
     Kontraband
     LiveLeak
-    MegaVideo
     MetaCafe
-    SpikedHumor
     Vimeo
-    Yahoo
+    YahooScreen
     Youtube
     Youtu.be
 
@@ -138,7 +135,7 @@ L<http://thisaintnews.com>
 
 =head1 LICENSE
 
-Copyright (C) 2011 by n0body L<http://thisaintnews.com/>
+Copyright (C) 2013 by n0body L<http://thisaintnews.com/>
 
 This library is free software, you can redistribute it and/or modify
 it under the same terms as Perl itself.

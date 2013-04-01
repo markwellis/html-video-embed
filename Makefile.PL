@@ -2,9 +2,8 @@ use inc::Module::Install;
 
 all_from('lib/HTML/Video/Embed.pm');
 
-requires 'Moose';
-requires 'namespace::autoclean';
-requires 'Moose::Role';
+requires 'Moo';
+requires 'Moo::Role';
 requires 'URI';
 requires 'URI::QueryParam';
 requires 'URI::Escape::XS';

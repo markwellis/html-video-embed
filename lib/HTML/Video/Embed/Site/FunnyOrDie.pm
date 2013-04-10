@@ -8,7 +8,7 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/videos/(\w+)/|;
+    return qr|^/videos/(\w+)|;
 }
 
 sub process{

@@ -1,3 +1,6 @@
+0.011
+    fixed regex not matching in some cases where there was extra data on string (eg ebaumsworld has dropped the last / off the url and was no longer matching)
+    added support for viemo mobile urls (has a /m before the video id)
 0.010
     fixed missing META.yml
 0.009

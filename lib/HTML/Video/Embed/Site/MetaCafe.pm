@@ -8,7 +8,7 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/watch/(\d+/\w+)/.*|;
+    return qr|^/watch/(\d+/\w+)/|;
 }
 
 sub process{

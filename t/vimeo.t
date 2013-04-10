@@ -11,7 +11,13 @@ my $embeder = new HTML::Video::Embed({
 is( 
     $embeder->url_to_embed('http://vimeo.com/12279924'),
     '<iframe class="test-video" src="http://player.vimeo.com/video/12279924" frameborder="0" allowFullScreen="1"></iframe>',
-    'vimeo embed works'
+    'vimeo embed works (normal url)'
+);
+
+is( 
+    $embeder->url_to_embed('http://vimeo.com/m/12279924'),
+    '<iframe class="test-video" src="http://player.vimeo.com/video/12279924" frameborder="0" allowFullScreen="1"></iframe>',
+    'vimeo embed works (mobile url)'
 );
 
 is( $embeder->url_to_embed('http://vimeo.com/fhfhgfhgfh'), undef, 'invalid url');

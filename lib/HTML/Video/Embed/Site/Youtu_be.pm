@@ -8,14 +8,14 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/([a-zA-Z0-9-_]{11})$|;
+    return qr|^/([a-zA-Z0-9-_]{11})|;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
-    
+
     if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
-        return $self->_embed_html( $embeder, $vid );
+        return $self->_embed_html( $embeder, $vid, $uri->fragment );
     }
     return undef;
 }

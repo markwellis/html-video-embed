@@ -8,7 +8,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.012001';
+our $VERSION = '0.013000';
 $VERSION = eval $VERSION;
 
 has 'class' => (
@@ -93,6 +93,13 @@ HTML::Video::Embed - convert a url into a html embed string
 
 $html_embed_code is now == "<iframe class="css-video-class" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen="1"></iframe>"
 
+    my $url = 'http://this.is.not/a_supported-video_url';
+
+    my $html_embed_code = $embedder->url_to_embed( $url );
+
+$html_embed_code is now == undef
+
+
 =head1 DESCRIPTION
 
 Converts urls into html embed codes, supported sites are
@@ -118,6 +125,8 @@ Takes one argument, class, which sets the css class of the video
 =head2 url_to_embed
 
 converts a url into the html embed code
+
+returns html on success, or undef if not supported
 
 =head1 SUPPORT
 

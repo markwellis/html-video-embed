@@ -14,10 +14,8 @@ sub _build_validate_reg{
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
-        return $self->_embed_html( $embeder, $vid, $uri->fragment );
-    }
-    return undef;
+    my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/;
+    return $self->_process( $embeder, $vid, $uri );
 }
 
 1;

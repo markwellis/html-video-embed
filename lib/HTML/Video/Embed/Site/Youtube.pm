@@ -8,7 +8,7 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^[a-zA-Z0-9-_]{11}$|;
+    return qr|^([a-zA-Z0-9-_]{11})$|;
 }
 
 has 'timecode_reg' => (
@@ -16,32 +16,33 @@ has 'timecode_reg' => (
 );
 
 sub _build_timecode_reg{
-    return qr/t=((?:\d+h)?(?:\d+m)?\d+s)/;
+    return qr/((?:\d+h)?(?:\d+m)?\d+s)/;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    my $vid = $uri->query_param('v') || '';
-    if ( $vid =~ m/${ \$self->validate_reg }/ ){
-        return $self->_embed_html( $embeder, $vid, $uri->fragment );
+    my ( $vid ) = ( $uri->query_param('v') || '' ) =~ m/${ \$self->validate_reg }/;
+
+    return $self->_process( $embeder, $vid, $uri );
+}
+
+sub _process{
+    my ( $self, $embeder, $vid, $uri ) = @_;
+
+    if ( $vid ){
+        my $timecode = $uri->query_param('t') || $uri->fragment || '';
+        if ( 
+            defined( $timecode )
+            && ( $timecode =~ m/${ \$self->timecode_reg }/ )
+        ){
+            $vid .= "#t=${1}";
+        }
+
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
 
     return undef;
-}
-
-#this is here so youtu.be can subclass this module and use the same embed code 
-sub _embed_html{
-    my ( $self, $embeder, $vid, $fragment ) = @_;
-    
-    if ( 
-        defined( $fragment )
-        && ( $fragment =~ m/${ \$self->timecode_reg }/ )
-    ){
-        $vid .= "#t=${1}";
-    }
-
-    return qq|<iframe class="${ \$embeder->class }" src="http://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
 }
 
 1;

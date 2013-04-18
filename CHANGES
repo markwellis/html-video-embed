@@ -1,3 +1,6 @@
+0.013000
+    Added support for youtube query timecode, as well as fragment timecode (&t=1h2m3s)
+    Added support for liveleak ?f=$vid urls (if someone copies the url from the embed code, instead of the page url)
 0.012001
     (hopefully) fixed regex compile error in perl < 5.12 that was causing test failures. thanks CPAN Testers! :)
 0.012

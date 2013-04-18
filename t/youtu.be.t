@@ -17,7 +17,13 @@ is(
 is( 
     $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0#t=01h53m22s&g=sdfsdf'),  
     '<iframe class="video" src="http://www.youtube.com/embed/xExSdzkZZB0#t=01h53m22s" frameborder="0" allowfullscreen="1"></iframe>',
-    'youtube embed works (with timecode)'
+    'youtube embed works (with timecode fragment)'
+);
+
+is( 
+    $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0?t=01h53m22s&g=sdfsdf'),  
+    '<iframe class="video" src="http://www.youtube.com/embed/xExSdzkZZB0#t=01h53m22s" frameborder="0" allowfullscreen="1"></iframe>',
+    'youtube embed works (with timecode query)'
 );
 
 is( 
@@ -26,7 +32,7 @@ is(
     'youtube embed works (no invalid timecode)'
 );
 
-is( $embeder->url_to_embed('http://www.youtu.be/xExxSdzZB0'), undef, 'invalid id');
+is( $embeder->url_to_embed('http://www.youtu.be/xZB0'), undef, 'invalid id');
 is( $embeder->url_to_embed('http://www.youtu.be/'), undef, 'no v=');
 is( $embeder->url_to_embed('http://www.y0utu.be/xExxSdzkZZB0'), undef, 'domain check');
 

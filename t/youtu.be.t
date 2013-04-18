@@ -15,7 +15,7 @@ is(
 );
 
 is( 
-    $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0#t=01h53m22s'),  
+    $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0#t=01h53m22s&g=sdfsdf'),  
     '<iframe class="video" src="http://www.youtube.com/embed/xExSdzkZZB0#t=01h53m22s" frameborder="0" allowfullscreen="1"></iframe>',
     'youtube embed works (with timecode)'
 );

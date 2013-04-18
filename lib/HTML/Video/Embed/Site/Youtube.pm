@@ -36,7 +36,7 @@ sub _embed_html{
     
     if ( 
         defined( $fragment )
-        && ( $fragment =~ m/${ $self->timecode_reg }/ )
+        && ( $fragment =~ m/${ \$self->timecode_reg }/ )
     ){
         $vid .= "#t=${1}";
     }

@@ -1,3 +1,5 @@
+0.012001
+    (hopefully) fixed regex compile error in perl < 5.12 that was causing test failures. thanks CPAN Testers! :)
 0.012
     added support for youtube timecodes (#t=1h2m3s in url)
 0.011

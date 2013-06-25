@@ -13,7 +13,7 @@ my @urls = (qw|
     http://vimeo.com/12279924
     http://screen.yahoo.com/riding-monster-waves-with-garrett-mcnamara-30343361.html
     http://www.youtu.be/xExSdzkZZB0
-    http://www.youtube.com/watch?v=xExSdzkZZB0 
+    https://www.youtube.com/watch?v=8EiJHmHPVig
 |);
 
 my $embeder = HTML::Video::Embed->new({class=>"video"});

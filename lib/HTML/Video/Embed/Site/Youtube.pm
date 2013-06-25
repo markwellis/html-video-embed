@@ -32,6 +32,7 @@ sub _process{
 
     if ( $vid ){
         my $timecode = $uri->query_param('t') || $uri->fragment || '';
+        $vid .= '?rel=0&html5=1';
         if ( 
             defined( $timecode )
             && ( $timecode =~ m/${ \$self->timecode_reg }/ )
@@ -39,7 +40,7 @@ sub _process{
             $vid .= "#t=${1}";
         }
 
-        return qq|<iframe class="${ \$embeder->class }" src="http://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
+        return qq|<iframe class="${ \$embeder->class }" src="https://www.youtube-nocookie.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
 
     return undef;

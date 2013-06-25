@@ -1,3 +1,7 @@
+0.014000
+    youtube uses nocookie site, https & html5
+    fullscreen should work properly now
+    changed metacafe embed to use iframe 
 0.013000
     Added support for youtube query timecode, as well as fragment timecode (&t=1h2m3s)
     Added support for liveleak ?f=$vid urls (if someone copies the url from the embed code, instead of the page url)

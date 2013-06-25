@@ -9,12 +9,12 @@ my $embeder = new HTML::Video::Embed({
 });
 
 is( $embeder->url_to_embed('http://www.liveleak.com/view?i=ffc_1272800490'),
-    '<iframe class="test-video" src="http://www.liveleak.com/ll_embed?i=ffc_1272800490" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://www.liveleak.com/ll_embed?i=ffc_1272800490" frameborder="0" allowfullscreen="1"></iframe>',
     'liveleak embed works'
 );
 
 is( $embeder->url_to_embed('http://www.liveleak.com/ll_embed?f=52ae730e7226'),
-    '<iframe class="test-video" src="http://www.liveleak.com/ll_embed?f=52ae730e7226" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://www.liveleak.com/ll_embed?f=52ae730e7226" frameborder="0" allowfullscreen="1"></iframe>',
     'liveleak embed works, embed url (f instead of i)'
 );
 

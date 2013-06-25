@@ -8,14 +8,14 @@ sub _build_domain_reg{
 }
 
 sub _build_validate_reg{
-    return qr|^/watch/(\d+/\w+)|;
+    return qr|^/watch/(\d+)/|;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
     if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
-        return qq|<embed flashVars="playerVars=autoPlay=no" src="http://www.metacafe.com/fplayer/${vid}.swf" class="${ \$embeder->class }" wmode="transparent" allowFullScreen="true" type="application/x-shockwave-flash"></embed>|;
+        return qq|<iframe src="http://www.metacafe.com/embed/${vid}/" class="${ \$embeder->class }" frameborder="0" allowfullscreen="1"></iframe>|;
     }
     
     return undef;

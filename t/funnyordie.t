@@ -9,7 +9,7 @@ my $embeder = new HTML::Video::Embed({
 });
 
 is( $embeder->url_to_embed('http://www.funnyordie.com/videos/1ab8850305/spook-hunters'),
-    '<iframe class="test-video" src="http://www.funnyordie.com/embed/1ab8850305" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://www.funnyordie.com/embed/1ab8850305" frameborder="0" allowfullscreen="1"></iframe>',
     'funnyordie embed works'
 );
 

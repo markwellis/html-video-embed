@@ -24,7 +24,7 @@ sub process{
     $vid ||= '';
 
     if ( $vid =~ m/${ \$self->validate_reg }/ ){
-        return qq|<iframe class="${ \$embeder->class }" src="http://www.liveleak.com/ll_embed?${query_param}=${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.liveleak.com/ll_embed?${query_param}=${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
 
     return undef;

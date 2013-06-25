@@ -15,7 +15,7 @@ sub process{
     my ( $self, $embeder, $uri ) = @_;
 
     if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
-        return qq|<iframe class="${ \$embeder->class }" src="http://www.dailymotion.com/embed/video/${vid}" frameborder="0" allowFullScreen="1"></iframe>|;
+        return qq|<iframe class="${ \$embeder->class }" src="http://www.dailymotion.com/embed/video/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
     
     return undef;

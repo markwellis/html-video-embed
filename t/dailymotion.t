@@ -10,7 +10,7 @@ my $embeder = new HTML::Video::Embed({
 
 is( 
     $embeder->url_to_embed('http://www.dailymotion.com/video/xbrozz_the-worst-5-things-to-say-policemen_fun'),
-    '<iframe class="test-video" src="http://www.dailymotion.com/embed/video/xbrozz" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://www.dailymotion.com/embed/video/xbrozz" frameborder="0" allowfullscreen="1"></iframe>',
     'dailymotion embed works'
 );
 

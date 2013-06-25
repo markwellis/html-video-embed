@@ -10,7 +10,7 @@ my $embeder = new HTML::Video::Embed({
 
 is( 
     $embeder->url_to_embed('http://www.metacafe.com/watch/10099000/clumsy_penguins/'),
-    '<embed flashVars="playerVars=autoPlay=no" src="http://www.metacafe.com/fplayer/10099000/clumsy_penguins.swf" class="test-video" wmode="transparent" allowFullScreen="true" type="application/x-shockwave-flash"></embed>',
+    '<iframe src="http://www.metacafe.com/embed/10099000/" class="test-video" frameborder="0" allowfullscreen="1"></iframe>',
     'metacafe embed works'
 );
 

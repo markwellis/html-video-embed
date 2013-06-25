@@ -10,7 +10,7 @@ my $embeder = new HTML::Video::Embed({
 
 is( 
     $embeder->url_to_embed('http://screen.yahoo.com/riding-monster-waves-with-garrett-mcnamara-30343361.html'),
-    '<iframe class="test-video" src="http://d.yimg.com/nl/vyc/site/player.html#browseCarouselUI=hide&startScreenCarouselUI=hide&vid=30343361&repeat=0" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://d.yimg.com/nl/vyc/site/player.html#browseCarouselUI=hide&startScreenCarouselUI=hide&vid=30343361&repeat=0" frameborder="0" allowfullscreen="1"></iframe>',
     'yahoo-screen embed works'
 );
 

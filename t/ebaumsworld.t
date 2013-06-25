@@ -9,7 +9,7 @@ my $embeder = new HTML::Video::Embed({
 });
 
 is( $embeder->url_to_embed('http://www.ebaumsworld.com/video/watch/81510426/'),
-    '<iframe class="test-video" src="http://www.ebaumsworld.com/media/embed/81510426" frameborder="0" allowFullScreen="1"></iframe>',
+    '<iframe class="test-video" src="http://www.ebaumsworld.com/media/embed/81510426" frameborder="0" allowfullscreen="1"></iframe>',
     'ebaumsworld embed works'
 );
 

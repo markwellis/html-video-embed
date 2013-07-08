@@ -16,13 +16,13 @@ is(
 
 is( 
     $embeder->url_to_embed('http://www.youtu.be/xExSdzkZZB0#t=01h53m22s&g=sdfsdf'),  
-    '<iframe class="video" src="https://www.youtube-nocookie.com/embed/xExSdzkZZB0?rel=0&html5=1#t=01h53m22s" frameborder="0" allowfullscreen="1"></iframe>',
+    '<iframe class="video" src="https://www.youtube-nocookie.com/embed/xExSdzkZZB0?rel=0&html5=1&start=6802" frameborder="0" allowfullscreen="1"></iframe>',
     'youtube embed works (with timecode fragment)'
 );
 
 is( 
-    $embeder->url_to_embed('https://www.youtu.be/xExSdzkZZB0?t=01h53m22s&g=sdfsdf'),  
-    '<iframe class="video" src="https://www.youtube-nocookie.com/embed/xExSdzkZZB0?rel=0&html5=1#t=01h53m22s" frameborder="0" allowfullscreen="1"></iframe>',
+    $embeder->url_to_embed('https://www.youtu.be/xExSdzkZZB0?t=3h7m2s&g=sdfsdf'),
+    '<iframe class="video" src="https://www.youtube-nocookie.com/embed/xExSdzkZZB0?rel=0&html5=1&start=11222" frameborder="0" allowfullscreen="1"></iframe>',
     'youtube embed works (with timecode query)'
 );
 

@@ -16,7 +16,7 @@ has 'timecode_reg' => (
 );
 
 sub _build_timecode_reg{
-    return qr/((?:\d+h)?(?:\d+m)?\d+s)/;
+    return qr/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)/;
 }
 
 sub process{
@@ -35,9 +35,24 @@ sub _process{
         $vid .= '?rel=0&html5=1';
         if ( 
             defined( $timecode )
-            && ( $timecode =~ m/${ \$self->timecode_reg }/ )
+            && ( my @time = $timecode =~ m/${ \$self->timecode_reg }/ )
         ){
-            $vid .= "#t=${1}";
+            my $start = 0;
+            if ( $time[0] ){
+            #hours
+                $start += 3600 * $time[0];
+            }
+            if ( $time[1] ){
+            #mins
+                $start += 60 * $time[1];
+            }
+            if ( $time[2] ){
+            #seconds
+                $start += $time[2];
+            }
+            if ( $start ){
+                $vid .= "&start=${start}";
+            }
         }
 
         return qq|<iframe class="${ \$embeder->class }" src="https://www.youtube-nocookie.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;

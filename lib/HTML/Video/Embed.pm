@@ -8,7 +8,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.014000';
+our $VERSION = '0.015000';
 $VERSION = eval $VERSION;
 
 has 'class' => (

@@ -7,10 +7,16 @@ requires 'Moo::Role';
 requires 'URI';
 requires 'URI::QueryParam';
 requires 'URI::Escape::XS';
-
 requires 'Data::Validate::URI';
 requires 'Module::Find';
+
 test_requires 'Test::More';
+
+perl_version '5.008';
+
+resources(
+    'repository'  => 'https://github.com/n0body-/html-video-embed.git',
+);
 
 auto_install;
 WriteAll;

@@ -1,5 +1,9 @@
 Revision history for perl module HTML::Video::Embed
 
+0.015002 2013-07-29
+    - Reformatted Changes file as per CPAN::Changes::Spec
+    - Changed issue tracker to github
+
 0.015001 2013-07-27
     - Added github repo to Makefile.PL
 

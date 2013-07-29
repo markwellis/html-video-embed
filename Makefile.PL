@@ -15,6 +15,7 @@ test_requires 'Test::More';
 perl_version '5.008';
 
 resources(
+    'bugtracker'  => 'https://github.com/n0body-/html-video-embed/issues',
     'repository'  => 'https://github.com/n0body-/html-video-embed.git',
 );
 

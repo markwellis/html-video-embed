@@ -130,7 +130,7 @@ returns html on success, or undef if not supported
 
 =head1 SUPPORT
 
-Bugs should always be submitted via the CPAN bug tracker
+Please submit bugs through L<https://github.com/n0body-/html-video-embed/issues>
 
 For other issues, contact the maintainer
 

@@ -8,7 +8,7 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.015002';
+our $VERSION = '0.015003';
 $VERSION = eval $VERSION;
 
 has 'class' => (
@@ -120,7 +120,7 @@ Converts urls into html embed codes, supported sites are
 
 =head2 new
 
-Takes one argument, class, which sets the css class of the video 
+Takes one argument, class, which sets the css class of the video
 
 =head2 url_to_embed
 
@@ -128,15 +128,9 @@ converts a url into the html embed code
 
 returns html on success, or undef if not supported
 
-=head1 SUPPORT
-
-Please submit bugs through L<https://github.com/n0body-/html-video-embed/issues>
-
-For other issues, contact the maintainer
-
 =head1 AUTHORS
 
-n0body E<lt>n0body@thisaintnews.comE<gt>
+Mark Ellis E<lt>markellis@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
@@ -144,7 +138,7 @@ L<http://thisaintnews.com>
 
 =head1 LICENSE
 
-Copyright (C) 2013 by n0body L<http://thisaintnews.com/>
+Copyright 2014 Mark Ellis E<lt>markellis@cpan.orgE<gt>
 
 This library is free software, you can redistribute it and/or modify
 it under the same terms as Perl itself.

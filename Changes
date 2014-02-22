@@ -1,5 +1,8 @@
 Revision history for perl module HTML::Video::Embed
 
+0.015003 2014-02-22
+    - Changed github repo url
+
 0.015002 2013-07-29
     - Reformatted Changes file as per CPAN::Changes::Spec
     - Changed issue tracker to github
@@ -13,7 +16,7 @@ Revision history for perl module HTML::Video::Embed
 0.014000 2013-06-25
     - Youtube uses nocookie site, https & html5
     - Fullscreen should work properly now
-    - Changed metacafe embed to use iframe 
+    - Changed metacafe embed to use iframe
 
 0.013000 2013-04-18
     - Added support for youtube query timecode, as well as fragment timecode (&t=1h2m3s)

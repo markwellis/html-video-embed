@@ -3,18 +3,17 @@ use Moo;
 
 extends 'HTML::Video::Embed::Site::Youtube';
 
-sub _build_domain_reg{
-    return qr/youtu\.be/;
+our $VERSION = '0.016000';
+$VERSION = eval $VERSION;
+
+sub domain_reg {
+    qr/youtu\.be/;
 }
 
-sub _build_validate_reg{
-    return qr|^/([a-zA-Z0-9-_]{11})|;
-}
-
-sub process{
+sub process {
     my ( $self, $embeder, $uri ) = @_;
 
-    my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/;
+    my ( $vid ) = $uri->path =~ m|^/([a-zA-Z0-9-_]{11})|;
     return $self->_process( $embeder, $vid, $uri );
 }
 

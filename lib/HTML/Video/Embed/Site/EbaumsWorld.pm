@@ -3,21 +3,21 @@ use Moo;
 
 with 'HTML::Video::Embed::Module';
 
-sub _build_domain_reg{
-    return qr/ebaumsworld\.com/;
+our $VERSION = '0.016000';
+$VERSION = eval $VERSION;
+
+sub domain_reg {
+    qr/ebaumsworld\.com/;
 }
 
-sub _build_validate_reg{
-    return qr|^/video/watch/(\d+)|;
-}
-
-sub process{
+sub process {
     my ( $self, $embeder, $uri ) = @_;
 
-    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+    return undef if $embeder->secure;
+    if ( my ( $vid ) = $uri->path =~ m|^/video/watch/(\d+)| ) {
         return qq|<iframe class="${ \$embeder->class }" src="http://www.ebaumsworld.com/media/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
-    
+
     return undef;
 }
 

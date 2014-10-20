@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 4;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
@@ -16,5 +16,3 @@ is( $embeder->url_to_embed('http://www.ebaumsworld.com/video/watch/81510426/'),
 is( $embeder->url_to_embed('http://www.ebaumsworld.com/video/watch/wibble/'), undef, 'invalid video');
 is( $embeder->url_to_embed('http://www.ebaumsworld.com/video/watch/'), undef, 'no video');
 is( $embeder->url_to_embed('http://www.eboumsworld.com/video/watch/81510426/'), undef, 'domain check');
-
-done_testing;

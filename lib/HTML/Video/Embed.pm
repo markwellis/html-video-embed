@@ -8,18 +8,23 @@ use URI::Escape::XS;
 use Data::Validate::URI qw/is_web_uri/;
 use Module::Find;
 
-our $VERSION = '0.015003';
+our $VERSION = '0.016000';
 $VERSION = eval $VERSION;
 
-has 'class' => (
-    'is' => 'rw',
-    'required' => 1,
+has class => (
+    is          => 'ro',
+    required    => 1,
 );
 
-has '_modules' => (
-    'is' => 'ro',
-    'init_arg' => undef,
-    'builder' => '_build__modules',
+has secure => (
+    is          => 'ro',
+    default     => 0,
+);
+
+has _modules => (
+    is          => 'ro',
+    init_arg    => undef,
+    builder     => '_build__modules',
 );
 
 sub _build__modules{
@@ -30,7 +35,12 @@ sub _build__modules{
     my @mods = useall( $namespace );
 
     my $modules = {};
-    foreach my $mod ( @mods ){
+    MODULES: foreach my $mod ( @mods ){
+        {
+            no warnings 'uninitialized';
+            next MODULES if $VERSION != eval "\$${mod}::VERSION";
+        }
+
         my $module = $mod->new;
         $modules->{ $module->domain_reg } = $module;
     }
@@ -84,14 +94,15 @@ HTML::Video::Embed - convert a url into a html embed string
     use HTML::Video::Embed;
 
     my $embedder = HTML::Video::Embed->new({
-        'class' => 'css-video-class',
+        class   => 'css-video-class',
+        secure  => 1
     });
 
     my $url = 'http://www.youtube.com/watch?v=HMhks1TSFog';
 
     my $html_embed_code = $embedder->url_to_embed( $url );
 
-$html_embed_code is now == "<iframe class="css-video-class" src="http://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen="1"></iframe>"
+$html_embed_code is now == "<iframe class="css-video-class" src="https://www.youtube.com/embed/HMhks1TSFog" frameborder="0" allowfullscreen="1"></iframe>"
 
     my $url = 'http://this.is.not/a_supported-video_url';
 
@@ -120,7 +131,15 @@ Converts urls into html embed codes, supported sites are
 
 =head2 new
 
-Takes one argument, class, which sets the css class of the video
+Takes two arguments
+
+=head3 class
+
+sets the css class of the video
+
+=head3 secure
+
+if true, will return a url with the https scheme, or undef if the site doesn't support secure embedding
 
 =head2 url_to_embed
 

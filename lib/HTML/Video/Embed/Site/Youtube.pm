@@ -3,31 +3,22 @@ use Moo;
 
 with 'HTML::Video::Embed::Module';
 
-sub _build_domain_reg{
+our $VERSION = '0.016000';
+$VERSION = eval $VERSION;
+
+sub domain_reg {
     return qr/youtube\.com/;
 }
 
-sub _build_validate_reg{
-    return qr|^([a-zA-Z0-9-_]{11})$|;
-}
-
-has 'timecode_reg' => (
-    'is' => 'lazy',
-);
-
-sub _build_timecode_reg{
-    return qr/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)/;
-}
-
-sub process{
+sub process {
     my ( $self, $embeder, $uri ) = @_;
 
-    my ( $vid ) = ( $uri->query_param('v') || '' ) =~ m/${ \$self->validate_reg }/;
+    my ( $vid ) = ( $uri->query_param('v') || '' ) =~ m|^([a-zA-Z0-9-_]{11})$|;
 
     return $self->_process( $embeder, $vid, $uri );
 }
 
-sub _process{
+sub _process {
     my ( $self, $embeder, $vid, $uri ) = @_;
 
     if ( $vid ){
@@ -35,7 +26,7 @@ sub _process{
         $vid .= '?rel=0&html5=1';
         if ( 
             defined( $timecode )
-            && ( my @time = $timecode =~ m/${ \$self->timecode_reg }/ )
+            && ( my @time = $timecode =~ m/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)/ )
         ){
             my $start = 0;
             if ( $time[0] ){
@@ -55,7 +46,8 @@ sub _process{
             }
         }
 
-        return qq|<iframe class="${ \$embeder->class }" src="https://www.youtube-nocookie.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
+        my $schema = $embeder->secure ? 'https' : 'http';
+        return qq|<iframe class="${ \$embeder->class }" src="${schema}://www.youtube-nocookie.com/embed/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
 
     return undef;

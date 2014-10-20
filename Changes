@@ -1,5 +1,11 @@
 Revision history for perl module HTML::Video::Embed
 
+0.016000 2014-10-30
+    - Added secure mode - if in secure mode use https if supported, or return undef if not supported
+    - Added version to modules, and check to not load modules with a missing/mismatched version
+    - Deleted kontraband module as it's gone now
+    - Delete yahoo screen module as it wasn't working properly
+
 0.015003 2014-02-22
     - Changed github repo url
 

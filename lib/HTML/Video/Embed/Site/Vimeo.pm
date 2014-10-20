@@ -3,21 +3,21 @@ use Moo;
 
 with 'HTML::Video::Embed::Module';
 
-sub _build_domain_reg{
-    return qr/vimeo\.com/;
-}
+our $VERSION = '0.016000';
+$VERSION = eval $VERSION;
 
-sub _build_validate_reg{
-    return qr|^(?:/m)?/(\d+)|;
+sub domain_reg {
+    qr/vimeo\.com/;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
-        return qq|<iframe class="${ \$embeder->class }" src="http://player.vimeo.com/video/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
+    my $schema = $embeder->secure ? 'https' : 'http';
+    if ( my ( $vid ) = $uri->path =~ m|^(?:/m)?/(\d+)| ) {
+        return qq|<iframe class="${ \$embeder->class }" src="${schema}://player.vimeo.com/video/${vid}" frameborder="0" allowfullscreen="1"></iframe>|;
     }
-    
+
     return undef;
 }
 

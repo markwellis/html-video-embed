@@ -3,21 +3,21 @@ use Moo;
 
 with 'HTML::Video::Embed::Module';
 
-sub _build_domain_reg{
-    return qr/metacafe\.com/;
-}
+our $VERSION = '0.016000';
+$VERSION = eval $VERSION;
 
-sub _build_validate_reg{
-    return qr|^/watch/(\d+)/|;
+sub domain_reg {
+    qr/metacafe\.com/;
 }
 
 sub process{
     my ( $self, $embeder, $uri ) = @_;
 
-    if ( my ( $vid ) = $uri->path =~ m/${ \$self->validate_reg }/ ){
+    return undef if $embeder->secure;
+    if ( my ( $vid ) = $uri->path =~ m|^/watch/(\d+)/| ) {
         return qq|<iframe src="http://www.metacafe.com/embed/${vid}/" class="${ \$embeder->class }" frameborder="0" allowfullscreen="1"></iframe>|;
     }
-    
+
     return undef;
 }
 

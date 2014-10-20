@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 4;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
@@ -16,5 +16,3 @@ is( $embeder->url_to_embed('http://www.funnyordie.com/videos/1ab8850305/spook-hu
 is( $embeder->url_to_embed('http://www.funnyordie.com/video/1ab8850305/spook-hunters'), undef, 'invalid url');
 is( $embeder->url_to_embed('http://www.funnyordie.com/videos//spook-hunters'), undef, 'no video id');
 is( $embeder->url_to_embed('http://www.funny0rdie.com/videos/1ab8850305/spook-hunters'), undef, 'domain check');
-
-done_testing;

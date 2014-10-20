@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 6;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
@@ -22,4 +22,11 @@ is( $embeder->url_to_embed('http://www.liveleak.com/view?i=ffc_12728770049090'),
 is( $embeder->url_to_embed('http://www.liveleak.com/view?v=ffc_12728004900'), undef, 'no i=');
 is( $embeder->url_to_embed('http://www.l1veleak.com/view?i=ffc_12728004900'), undef, 'domain check');
 
-done_testing;
+{
+    my $embeder = new HTML::Video::Embed({
+        class => "test-video",
+        secure  => 1,
+    });
+
+    is $embeder->url_to_embed('http://www.liveleak.com/view?i=ffc_1272800490'), undef, 'secure mode returns undef';
+}

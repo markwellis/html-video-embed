@@ -1,11 +1,12 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 7;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
     class => "video",
+    secure  => 1,
 });
 
 is( 
@@ -35,5 +36,3 @@ is(
 is( $embeder->url_to_embed('http://www.youtu.be/xZB0'), undef, 'invalid id');
 is( $embeder->url_to_embed('http://www.youtu.be/'), undef, 'no v=');
 is( $embeder->url_to_embed('http://www.y0utu.be/xExxSdzkZZB0'), undef, 'domain check');
-
-done_testing;

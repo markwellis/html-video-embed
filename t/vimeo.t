@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 5;
 use HTML::Video::Embed;
 
 my $embeder = new HTML::Video::Embed({
@@ -23,5 +23,3 @@ is(
 is( $embeder->url_to_embed('http://vimeo.com/fhfhgfhgfh'), undef, 'invalid url');
 is( $embeder->url_to_embed('http://vimeo.com/'), undef, 'no video id');
 is( $embeder->url_to_embed('http://v1meo.com/12279924'), undef, 'domain check');
-
-done_testing;
